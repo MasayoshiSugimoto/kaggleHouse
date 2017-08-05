@@ -15,7 +15,7 @@ for line in open('../output/featureMap.txt'):
     lineAsArray = line.rstrip().split('\t')
     features.append(lineAsArray)
 
-for filePath in ['../output/test.svm', '../output/train.svm']:
+for filePath in ['../output/test.svm', '../output/train.svm', '../output/test.txt']:
 
     lineIndex = 0
     for line in open(filePath):

@@ -1,0 +1,8 @@
+#Vim swap files
+*.swp
+
+#Output directory
+output/
+
+#Generated files
+src/pred.txt
