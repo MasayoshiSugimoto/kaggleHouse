@@ -6,7 +6,7 @@ python formatData.py
 python mknfold.py
 
 #Training the output model
-~/Dev/xgboost/xgboost house.conf
+~/Dev/xgboost/xgboost house.conf task=train model_out=0002.model
 #Output prediction of test data
 ~/Dev/xgboost/xgboost house.conf task=pred model_in=0002.model
 #Print the boosters of 0002.model in dump.raw.txt
