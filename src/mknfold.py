@@ -2,7 +2,7 @@ import sys
 import random
 
 random.seed(10)
-nFold=5
+nFold=10
 
 inputFile = open('../output/train.txt')
 trainFile = open('../output/train.svm', 'w')

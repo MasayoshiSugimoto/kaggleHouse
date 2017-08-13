@@ -7,3 +7,4 @@ output/
 #Generated files
 src/pred.txt
 *.model
+output/

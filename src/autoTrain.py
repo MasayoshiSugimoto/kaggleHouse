@@ -38,7 +38,7 @@ class XGParam:
 ######################################################################
 # Global variables
 
-parameters = [XGParam('alpha', 'double', 0.0, 0.0, float('nan')),]
+parameters = [XGParam('lambda', 'double', 0.0, 0.0, float('nan')),]
 
 for parameter in parameters:
     print(parameter)
@@ -60,13 +60,13 @@ def generateConfig(configVector):
     writeLine(outputFile, 'booster = gbtree')
     writeLine(outputFile, 'objective = reg:linear')
     writeLine(outputFile, 'max_depth = 1')
-    writeLine(outputFile, 'num_round = 100000')
+    writeLine(outputFile, 'num_round = 1000')
     writeLine(outputFile, 'save_period = 0')
     writeLine(outputFile, 'data = "../output/train.svm"')
     writeLine(outputFile, 'eval[test] = "../output/test.svm"')
     writeLine(outputFile, 'eval_train = 1')
     writeLine(outputFile, 'test:data = "../output/test.txt"')
-    writeLine(outputFile, 'eta = 0.53')
+    writeLine(outputFile, 'eta = 0.28')
     writeLine(outputFile, 'min_child_weight = 1.5')
     writeLine(outputFile, 'lambda = 0.96')
     writeLine(outputFile, 'tree_method = exact')
@@ -99,35 +99,35 @@ os.system('python formatData.py')
 os.system('python mknfold.py')
 
 generateConfig(config)
-train()
-minScore = getMinScore()
-bestConfig = config[0]
-print("minScore=%i" % minScore)
-
-resultFileName = '../output/result.txt'
-resultFile = open(resultFileName, 'w')
-resultFile.write('parameter,score\n')
-logScore(parameters, config, minScore)
-
-for i in range(100):
-
-    config[0] = config[0] + 0.01
-
-    generateConfig(config)
-    train()
-    newMinScore = getMinScore()
-    logScore(parameters, config, newMinScore)
-
-    if newMinScore < minScore:
-        minScore = newMinScore
-        bestConfig = config[0]
-
-resultFile.close()
-print("minScore=%i" % minScore)
-print('bestConfig=%f' % bestConfig)
-
-data = pandas.read_csv(resultFileName)
-pyplot.plot(data['score'])
-pyplot.show()
+#train()
+#minScore = getMinScore()
+#bestConfig = config[0]
+#print("minScore=%i" % minScore)
+#
+#resultFileName = '../output/result.txt'
+#resultFile = open(resultFileName, 'w')
+#resultFile.write('parameter,score\n')
+#logScore(parameters, config, minScore)
+#
+#for i in range(100):
+#
+#    config[0] = config[0] + 0.01
+#
+#    generateConfig(config)
+#    train()
+#    newMinScore = getMinScore()
+#    logScore(parameters, config, newMinScore)
+#
+#    if newMinScore < minScore:
+#        minScore = newMinScore
+#        bestConfig = config[0]
+#
+#resultFile.close()
+#print("minScore=%i" % minScore)
+#print('bestConfig=%f' % bestConfig)
+#
+#data = pandas.read_csv(resultFileName)
+#pyplot.plot(data['score'])
+#pyplot.show()
 
 #os.system('python plotScore.py')
